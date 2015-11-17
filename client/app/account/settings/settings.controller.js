@@ -3,8 +3,6 @@
 angular.module('secretSantaApp')
   .controller('SettingsCtrl', function ($scope, User, Auth, $http, socket) {
 
-
-
      $scope.isLoggedIn = Auth.isLoggedIn;
      $scope.isAdmin = Auth.isAdmin;
      $scope.getCurrentUser = Auth.getCurrentUser;
@@ -14,23 +12,6 @@ angular.module('secretSantaApp')
          $scope.userId = result.data._id;
          $scope.user = result.data.name;
      })
-
-
-
-
-     $scope.tinymceOptions = {
-       onChange: function(e) {
-          // put logic here for keypress and cut/paste changes
-       },
-       inline: false,
-       plugins : 'advlist autolink link image lists charmap print preview',
-       skin: 'lightgray',
-       theme : 'modern'
-      };
-
-
-
-
 
       $http.get('/api/wishlists').success(function(wishlists) {
         $scope.wishlists = wishlists;
@@ -42,9 +23,6 @@ angular.module('secretSantaApp')
           });
         });
       });
-
-
-
 
       $scope.addwishlist = function() {
        $http.post('/api/wishlists', {
@@ -61,8 +39,15 @@ angular.module('secretSantaApp')
        $http.delete('/api/wishlists/' + wishlists._id);
       };
 
-
-
+      $scope.tinymceOptions = {
+       onChange: function(e) {
+          // put logic here for keypress and cut/paste changes
+       },
+       inline: false,
+       plugins : 'advlist autolink link image lists charmap print preview',
+       skin: 'lightgray',
+       theme : 'modern'
+      };
 
 
     $scope.errors = {};

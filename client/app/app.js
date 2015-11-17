@@ -7,7 +7,8 @@ angular.module('secretSantaApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'ui.tinymce'
+  'ui.tinymce',
+  'angular.filter'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

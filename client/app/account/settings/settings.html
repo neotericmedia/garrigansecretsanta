@@ -5,10 +5,9 @@
    <div class="container">
      <div class="row">
 
+        <p>&nbsp;</p>
 
-        <div class="panel" style="padding: 30px; overflow:hidden">
-
-
+        <div class="col-md-10 col-md-offset-1 panel" style="padding: 30px; overflow:hidden">
 
 
 
@@ -36,7 +35,9 @@
                    <div class="row">
                      <div class="form-group col-md-8 col-md-offset-2">
                        <label for="exampleInputPassword1"><i class="fa fa-pencil-square-o"></i></label>
-                       <textarea type="things" ui-tinymce="tinymceOptions" ng-model="other" class="form-control input-lg" rows="6" mongoose-error placeholder="Detials"/></textarea>
+                       <!--<textarea type="things" ui-tinymce="tinymceOptions" ng-model="other" class="form-control input-lg" rows="6" mongoose-error placeholder="Detials"/></textarea>-->
+                       <textarea ui-tinymce="tinymceOptions" rows="10" ui-tinymce class="form-control" type="text" ng-model="other"></textarea>
+
                      </div>
                    </div>
 
@@ -51,18 +52,15 @@
 
 
 
-
-
-
              <div style="height:50px;"></div>
+
 
 
              <div class="row">
                <div class="form-group col-md-8 col-md-offset-2">
 
                     <h4 style="margin-bottom:30px;">My Wish List</h4>
-                    <!--<div ng-repeat="gift in addwishlists | filter: user">-->
-                    <div ng-repeat="gift in wishlists">
+                    <div ng-repeat="gift in wishlists | filter: user">
                        <ul class="locateList">
                           <li>
                              <span class="bold"><span class="cap">{{ gift.name }}</span></span><br>
@@ -79,9 +77,9 @@
 
                     <div ng-show="isAdmin()">
                        <h4 style="margin-bottom:30px;">All Gifts</h4>
-                       <div ng-repeat="location in addlocations">
+                       <div ng-repeat="gift in wishlists">
                           <ul class="locateList">
-                             <li><strong class="cap">{{ location.author.name }}</strong>&nbsp;&nbsp;&nbsp;<span class="bold cap">{{ location.name }}</span><a type="button" class="close" ng-click="deleteLocation(location)">&times;</a></li>
+                             <li><strong class="cap">{{ gift.author.name }}</strong>&nbsp;&nbsp;&nbsp;<span class="bold cap">{{ gift.name }}</span><a type="button" class="close" ng-click="deletewishlist(gift)">&times;</a></li>
                           </ul>
                        </div>
                        <hr style="margin-top:30px;margin-bottom:10px">
@@ -92,40 +90,43 @@
 
 
 
+             <div style="height:50px;"></div>
 
 
-             <div class="col-sm-12">
-               <h1>Change Password</h1>
-             </div>
 
-             <div class="col-sm-12">
-               <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+             <div class="row">
+                <div class="col-md-8 col-md-offset-2">
 
-                 <div class="form-group">
-                   <label>Current Password</label>
-                   <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-                          mongoose-error/>
-                   <p class="help-block" ng-show="form.password.$error.mongoose">
-                       {{ errors.other }}
-                   </p>
-                 </div>
+                     <h4 style="margin-bottom:30px;">Change Password</h4>
 
-                 <div class="form-group">
-                   <label>New Password</label>
+                     <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
 
-                   <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
-                          ng-minlength="3"
-                          required/>
-                   <p class="help-block"
-                      ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
-                     Password must be at least 3 characters.
-                   </p>
-                 </div>
+                       <div class="form-group">
+                         <label>Current Password</label>
+                         <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+                                mongoose-error/>
+                         <p class="help-block" ng-show="form.password.$error.mongoose">
+                             {{ errors.other }}
+                         </p>
+                       </div>
 
-                 <p class="help-block"> {{ message }} </p>
+                       <div class="form-group">
+                         <label>New Password</label>
 
-                 <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
-               </form>
+                         <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+                                ng-minlength="3"
+                                required/>
+                         <p class="help-block"
+                            ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+                           Password must be at least 3 characters.
+                         </p>
+                       </div>
+
+                       <p class="help-block"> {{ message }} </p>
+
+                       <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+                     </form>
+                </div>
              </div>
 
 

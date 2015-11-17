@@ -8,6 +8,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
+router.get('/name', controller.show2);
 router.post('/', auth.isAuthenticated(), controller.create);
 router.delete('/:id', auth.isAuthenticated(), controller.destroy);
 router.get('/admin/:id', controller.getAdminContent);
