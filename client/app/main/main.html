@@ -6,12 +6,21 @@
   <div class="row">
 
 
+     <div class="col-md-7 col-md-offset-3" style="position:relative">
+     <a href id="show" style="margin-bottom:40px; display:block;"><i class="fa fa-search" style="font-size: 1.45em;"></i></a>
+        <div class="blah">
+           <input ng-model="q" id="search" class="form-control input-lg" style="padding: 30px 20px 30px 20px; margin-bottom:10px" placeholder="Search">
+           <a href id="hide">Close</a>
+           <a class="clear" href data-ng-click="clearSearch()">Clear</a>
+        </div>
+     </div>
+
 
      <div class="col-md-12" style="padding-top:100px;padding-bottom:100px;">
 
-
        <div class="row">
-         <div class="col-md-7 col-md-offset-3" style="margin-top:0px; margin-bottom:0px" ng-repeat="(key, value) in wishlists | groupBy: 'author.name'">
+         <div class="col-md-7 col-md-offset-3" style="margin-top:0px; margin-bottom:0px" dir-paginate="(key, value) in wishlists | filter:q | groupBy: 'author.name' | itemsPerPage: pageSize">
+         <!--<div class="col-md-7 col-md-offset-3" style="margin-top:0px; margin-bottom:0px" ng-repeat="(key, value) in wishlists | groupBy: 'author.name'">-->
               <accordion close-others="oneAtATime">
                 <accordion-group>
                   <accordion-heading>
@@ -24,8 +33,8 @@
                               <a href="#" class="cap"><span class="littleTop"><i class="fa fa-angle-right"></i>&nbsp;{{ location.name }}</span></a>
                         </accordion-heading>
                         <div class="well well-lg highlightsPanel" style="padding-top:15px;padding-bottom:20px">
-                            <span class="hl">Store:</span> <span class="cap">{{ location.store }}</span><br>
-                            <span class="hl">More Info:</span>
+                            <span class="hl">Store</span> <span class="cap">{{ location.store }}</span><br>
+                            <span class="hl">More Info</span>
                             <div class="htmlTxt" ng-bind-html="location.other" class="ng-binding"></div>
                         </div>
                       </accordion-group>
@@ -37,8 +46,6 @@
          </div>
        </div>
      </div>
-
-
 
 
 
@@ -56,10 +63,14 @@
 
 
 
+<div style="border-top:1px solid #ececec;  padding-top: 120px">
+   <div class="container">
+      <div class="row">
 
-<footer class="footer">
-  <div class="container">
-      <p>Secret Santa v1.0 |
-        <a href="https://twitter.com/dgarriganweb" target="_blank">@dgarriganweb</a></p>
-  </div>
-</footer>
+      <div class="col-md-7 col-md-offset-3" style="color:#ccc;">
+      Secret Santa v1.0 | <a href="https://twitter.com/dgarriganweb" target="_blank">@dgarriganweb</a>
+      </div>
+
+      </div>
+   </div>
+</div>

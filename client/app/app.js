@@ -8,7 +8,8 @@ angular.module('secretSantaApp', [
   'ui.router',
   'ui.bootstrap',
   'ui.tinymce',
-  'angular.filter'
+  'angular.filter',
+  'angularUtils.directives.dirPagination'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

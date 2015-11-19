@@ -3,6 +3,13 @@
 angular.module('secretSantaApp')
   .controller('SettingsCtrl', function ($scope, User, Auth, $http, socket) {
 
+     $scope.currentPage = 1;
+     $scope.pageSize = 6;
+     $scope.meals = [];
+
+     $scope.longNumberLimit = 150;
+     $scope.addMore = "more";
+
      $scope.isLoggedIn = Auth.isLoggedIn;
      $scope.isAdmin = Auth.isAdmin;
      $scope.getCurrentUser = Auth.getCurrentUser;
